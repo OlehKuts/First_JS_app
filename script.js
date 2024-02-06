@@ -1,11 +1,17 @@
-const numberOfFilms = prompt("How many films did you watch already?", "");
+let numberOfFilms; // only variable declaration
+function appStart () {
 
+  while(!numberOfFilms || isNaN(numberOfFilms)){
+    numberOfFilms = +prompt("How many films did you watch already?", ""); // + allows get a number type
+  }
+}
+appStart();
 let personalMovieDB = {
-    count: Number(numberOfFilms),
+    count: numberOfFilms,
     movies: {},
     actors: {},
     genres: [],
-    private: true
+    private: false
 }
 console.log(personalMovieDB)
 const getLastFilmAndMark = (filmQuestion, markQuestion, times) => {
@@ -20,7 +26,6 @@ const getLastFilmAndMark = (filmQuestion, markQuestion, times) => {
         index--;
        }
     }
-    // const primary =  ["Man", "2.2", "Woman", "3.1"];
     const res = primaryArray.reduce((acc,current)=>{
         if(acc[acc.length-1].length == 2){
           acc.push([]);
@@ -41,5 +46,23 @@ function checkFilmExperience (filmsCount) {
   : filmsCount < 30 ? "The normal count" : filmsCount > 30 ? "You're the movie pro!" : "Error!"
   return response
 } 
-console.log(personalMovieDB)
+function showMyDB (obj) {
+  if (typeof obj.private === "boolean" && !obj.private) console.log(obj)
+}
+function writeYourGenres () {
+  let genres = []
+  for (let index = 0; index < 3; index++) {
+      let genreResponse = prompt(`Your favorite genre #${index+1}`, '');
+      if (genreResponse && genreResponse.length < 50 ) {
+        genres = [...genres, genreResponse]
+      }
+     else{
+      index--;
+     }
+  }
+  return genres
+}
+showMyDB(personalMovieDB)
 alert(checkFilmExperience(personalMovieDB.count))
+personalMovieDB.genres = writeYourGenres();
+console.log(personalMovieDB)
