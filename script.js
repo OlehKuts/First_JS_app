@@ -17,10 +17,10 @@ console.log(personalMovieDB)
 const getLastFilmAndMark = (filmQuestion, markQuestion, times) => {
     let primaryArray = []
     for (let index = 0; index < times; index++) {
-        let filmResponse = prompt(filmQuestion, '');
-        let markResponse = prompt(markQuestion, '');
+        let filmResponse = prompt(filmQuestion, '').trim();
+        let markResponse = +prompt(markQuestion, '');
         if (filmResponse && filmResponse.length < 50 && markResponse && Number(markResponse) >= 0 && Number(markResponse) <= 10) {
-          primaryArray = [...primaryArray, filmResponse, Number(markResponse)]
+          primaryArray = [...primaryArray, filmResponse, markResponse]
         }
        else{
         index--;
@@ -52,7 +52,7 @@ function showMyDB (obj) {
 function writeYourGenres () {
   let genres = []
   for (let index = 0; index < 3; index++) {
-      let genreResponse = prompt(`Your favorite genre #${index+1}`, '');
+      let genreResponse = prompt(`Your favorite genre #${index+1}`, '').trim();
       if (genreResponse && genreResponse.length < 50 ) {
         genres = [...genres, genreResponse]
       }
