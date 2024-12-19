@@ -62,7 +62,7 @@ let personalMovieDB = {
   }
 }
 personalMovieDB.start();
-personalMovieDB.movies = personalMovieDB.getLastFilmAndMark("Which film was you watching last time?", "Set mark from 1 to 10...", 2);
+personalMovieDB.movies = personalMovieDB.getLastFilmAndMark("Which film was you watching last time?", "Set mark from 1 to 10...", 1);
 personalMovieDB.genres = personalMovieDB.writeYourGenres();
 // personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.showMyDB(personalMovieDB);
